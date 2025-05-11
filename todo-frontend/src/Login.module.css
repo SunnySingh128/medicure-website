@@ -1,0 +1,296 @@
+/* Login.module.css */
+
+/* Variables for consistent theming */
+:root {
+  --primary-gradient: linear-gradient(to right, #6366f1, #8b5cf6);
+  --background-gradient: linear-gradient(to top right, #0369a1, #4f46e5, #7c3aed);
+  --text-light: rgba(255, 255, 255, 0.9);
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.15);
+  --success-color: #34d399;
+  --error-color: #f87171;
+  --transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Base styles */
+.loginContainer {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--background-gradient);
+  background-attachment: fixed;
+  padding: 1rem;
+}
+
+/* Card styles with glass morphism effect */
+.loginCard {
+  width: 100%;
+  max-width: 28rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--card-border);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: var(--transition-default);
+  padding: 2.5rem;
+  animation: fadeIn 0.8s ease-out forwards;
+  overflow: hidden;
+  position: relative;
+}
+
+.loginCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+
+.loginCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+}
+
+/* Header styles */
+.loginHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.loginTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loginSubtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Form styles */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  position: relative;
+}
+
+.loginInput {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border-radius: 0.75rem;
+  background: var(--input-bg);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.9375rem;
+  transition: var(--transition-default);
+}
+
+.loginInput:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.loginInput::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+/* Options row */
+.loginOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkboxContainer input {
+  accent-color: #8b5cf6;
+}
+
+.forgotPassword {
+  color: #d8b4fe;
+  transition: var(--transition-default);
+}
+
+.forgotPassword:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Button styles */
+.loginButton {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background: var(--primary-gradient);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-default);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.loginButton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: var(--transition-default);
+}
+
+.loginButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.loginButton:hover::after {
+  opacity: 1;
+}
+
+.loginButton:active {
+  transform: translateY(0);
+}
+
+/* Message styles */
+.loginMessage {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.successMessage {
+  color: var(--success-color);
+  background: rgba(52, 211, 153, 0.1);
+}
+
+.errorMessage {
+  color: var(--error-color);
+  background: rgba(248, 113, 113, 0.1);
+}
+
+/* Footer styles */
+.loginFooter {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.loginLink {
+  color: #d8b4fe;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-default);
+  position: relative;
+}
+
+.loginLink:hover {
+  color: white;
+}
+
+.loginLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.loginLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Animation container */
+.animationContainer {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.98);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .loginCard {
+    padding: 1.75rem;
+    border-radius: 1rem;
+  }
+  
+  .loginTitle {
+    font-size: 1.75rem;
+  }
+}

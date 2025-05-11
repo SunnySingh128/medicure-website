@@ -1,0 +1,29 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# 
+GEMINI_API_KEY=AIzaSyBFhcr3LM2UEl3OeYgcuL1UOeyPVwmEJxA
+EMAIL="sunnysingh14092005@gmail.com"
+PASSWORD="hwga psjd mdpr umqy"
+MONGODB_URI="mongodb+srv://sunnysingh14092005:5JkCE5GugdVjpbJb@cluster0.kb9fk.mongodb.net/todo"
