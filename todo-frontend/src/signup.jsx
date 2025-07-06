@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
-import styles from './Signup.module.css'; // Import the CSS Module
+import styles from './Signup.module.css';
 
 export default function Signup() {
   const [obj, setObj] = useState({
@@ -32,7 +32,8 @@ export default function Signup() {
           setMess(response.data.message || "Signup successful");
         } catch (err) {
           console.log(err);
-          setMess("Signup failed. Please try again.");
+          // Convert error to a string to ensure it's not an object
+          setMess(err.response?.data?.message || "Signup failed. Please try again.");
         } finally {
           setSub(false);
         }
@@ -75,8 +76,8 @@ export default function Signup() {
             className={styles.signupSelect}
           >
             <option value="">Select Gender</option>
-            <option value="male" className="text-black">Male</option>
-            <option value="female" className="text-black">Female</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
           </select>
 
           <input
@@ -95,7 +96,7 @@ export default function Signup() {
           >
             {sub ? (
               <span className="flex items-center justify-center">
-                <svg className="animate-spin mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>
@@ -109,7 +110,9 @@ export default function Signup() {
 
         {mess && (
           <p className={`${styles.signupMessage} ${
-            mess.toLowerCase().includes("success") ? styles.successMessage : styles.errorMessage
+            typeof mess === "string" && mess.toLowerCase().includes("success")
+              ? styles.successMessage
+              : styles.errorMessage
           }`}>
             {mess}
           </p>

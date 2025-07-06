@@ -87,7 +87,8 @@ const HomePage = () => {
 
 /* Dark mode support */
 .dark-mode .gradient-bg {
-  background: linear-gradient(135deg, #1a1f36 0%, #121624 100%);
+background: black;
+
 }
 
 .floating-icons-container {
@@ -289,7 +290,7 @@ const HomePage = () => {
   text-align: center;
   position: relative;
   z-index: 1;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 /* Dark mode support */
@@ -863,9 +864,9 @@ const HomePage = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => navigate('/login')}
+            onClick={() => navigate('/meter')}
           >
-            Get Started
+            realtime food and nutrition meter
           </motion.button>
         </div>
         <motion.div 

@@ -1,0 +1,408 @@
+/* FoodCalorieMeter.module.css */
+
+/* Container background styling with gradient instead of background image */
+.container {
+    min-height: 100vh;
+    padding: 1.5rem;
+    font-family: sans-serif;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(120deg, #f6f9fc 0%, #e9f1f9 100%);
+    animation: gradientShift 15s ease infinite;
+    background-size: 200% 200%;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Main card styling with entrance animation */
+  .card {
+    max-width: 36rem;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: cardAppear 0.8s ease-out forwards;
+  }
+  
+  @keyframes cardAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Header styling with animated gradient */
+  .header {
+    background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+    background-size: 200% 200%;
+    color: white;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: headerGlow 8s ease infinite;
+  }
+  
+  @keyframes headerGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .headerTitle {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .headerSubtitle {
+    opacity: 0.8;
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Search input styling with focus animation */
+  .searchInput {
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    width: 100%;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+  }
+  
+  .searchInput:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  /* Search results dropdown animation */
+  .searchDropdown {
+    position: absolute;
+    z-index: 10;
+    margin-top: 0.25rem;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-height: 15rem;
+    border-radius: 0.5rem;
+    overflow: auto;
+    border: 1px solid #e5e7eb;
+    animation: dropdownAppear 0.3s ease-out forwards;
+    transform-origin: top center;
+  }
+  
+  @keyframes dropdownAppear {
+    from { opacity: 0; transform: scaleY(0.9) translateY(-10px); }
+    to { opacity: 1; transform: scaleY(1) translateY(0); }
+  }
+  
+  .searchResultItem {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.15s ease;
+  }
+  
+  .searchResultItem:hover {
+    background-color: #eff6ff;
+    transform: translateX(4px);
+    transition: all 0.2s ease;
+  }
+  
+  /* Loading animations */
+  .loadingIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .loadingSpinner {
+    animation: spin 1.2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Selected foods list styling */
+  .foodsList {
+    background-color: white;
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .foodsList:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .foodsListHeader {
+    background: linear-gradient(to right, #f9fafb, #f3f4f6);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .foodItem {
+    padding: 0.75rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.15s ease, transform 0.2s ease;
+    border-radius: 0.5rem;
+  }
+  
+  .foodItem:hover {
+    background-color: #f9fafb;
+    transform: translateX(4px);
+  }
+  
+  .removeButton {
+    padding: 0.5rem;
+    color: #ef4444;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+  }
+  
+  .removeButton:hover {
+    background-color: #fee2e2;
+    transform: rotate(8deg) scale(1.1);
+  }
+  
+  /* Progress bars with animations */
+  .progressBar {
+    height: 1rem;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  
+  .progressBarFill {
+    height: 100%;
+    background: linear-gradient(to right, #10b981, #3b82f6);
+    border-radius: 9999px;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  /* Macro nutrients cards with hover effects */
+  .macroCard {
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .proteinCard {
+    background-color: #eff6ff;
+  }
+  
+  .proteinCard:hover {
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    transform: translateY(-4px);
+  }
+  
+  .fatCard {
+    background-color: #fef2f2;
+  }
+  
+  .fatCard:hover {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+    transform: translateY(-4px);
+  }
+  
+  .carbsCard {
+    background-color: #fefce8;
+  }
+  
+  .carbsCard:hover {
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.2);
+    transform: translateY(-4px);
+  }
+  
+  .macroValue {
+    font-weight: bold;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+  }
+  
+  .proteinValue {
+    color: #3b82f6;
+  }
+  
+  .fatValue {
+    color: #ef4444;
+  }
+  
+  .carbsValue {
+    color: #eab308;
+  }
+  
+  /* Macro distribution chart with animation */
+  .macroChart {
+    height: 1.5rem;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .macroChartSection {
+    height: 100%;
+    float: left;
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .proteinSection {
+    background-color: #3b82f6;
+    animation: expandBar 1s ease forwards;
+  }
+  
+  .fatSection {
+    background-color: #ef4444;
+    animation: expandBar 1s ease forwards;
+  }
+  
+  .carbsSection {
+    background-color: #eab308;
+    animation: expandBar 1s ease forwards;
+  }
+  
+  @keyframes expandBar {
+    from { width: 0%; }
+    to { width: var(--final-width); }
+  }
+  
+  /* Tabs styling with animations */
+  .tabNavigation {
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+    display: flex;
+  }
+  
+  .tabButton {
+    padding: 0.5rem 0.25rem;
+    margin-right: 2rem;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+  }
+  
+  .tabButton:hover {
+    color: #4b5563;
+    border-color: #9ca3af;
+  }
+  
+  .activeTab {
+    border-color: #3b82f6;
+    color: #2563eb;
+  }
+  
+  /* Exercise recommendation styling */
+  .exerciseItem {
+    padding: 1rem;
+    background: linear-gradient(to right, #ecfdf5, #d1fae5);
+    border-radius: 0.5rem;
+    border: 1px solid #a7f3d0;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease forwards;
+    opacity: 0;
+  }
+  
+  .exerciseItem:nth-child(1) { animation-delay: 0.1s; }
+  .exerciseItem:nth-child(2) { animation-delay: 0.2s; }
+  .exerciseItem:nth-child(3) { animation-delay: 0.3s; }
+  .exerciseItem:nth-child(4) { animation-delay: 0.4s; }
+  
+  @keyframes slideIn {
+    from { 
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .exerciseItem:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(16, 185, 129, 0.15);
+  }
+  
+  /* Health impacts styling */
+  .healthItem {
+    display: flex;
+    align-items: start;
+    margin-bottom: 0.5rem;
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+  }
+  
+  .healthItem:nth-child(1) { animation-delay: 0.1s; }
+  .healthItem:nth-child(2) { animation-delay: 0.2s; }
+  .healthItem:nth-child(3) { animation-delay: 0.3s; }
+  .healthItem:nth-child(4) { animation-delay: 0.4s; }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Empty state styling */
+  .emptyState {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .emptyStateIcon {
+    background-color: #f3f4f6;
+    display: inline-flex;
+    border-radius: 9999px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Responsive enhancements */
+  @media (max-width: 640px) {
+    .container {
+      padding: 0.75rem;
+    }
+    
+    .header {
+      padding: 1rem;
+    }
+    
+    .headerTitle {
+      font-size: 1.5rem;
+    }
+  }

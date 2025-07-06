@@ -1,0 +1,281 @@
+/* ProfilePage.module.css */
+
+.profilePageContainer {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+  
+  .profileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .profileHeader h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  
+  .actionButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }
+  
+  .editButton {
+    background-color: #ebf4ff;
+    color: #3182ce;
+  }
+  
+  .editButton:hover {
+    background-color: #bee3f8;
+  }
+  
+  .saveButton {
+    background-color: #e6fffa;
+    color: #38b2ac;
+  }
+  
+  .saveButton:hover {
+    background-color: #b2f5ea;
+  }
+  
+  .cancelButton {
+    background-color: #fff5f5;
+    color: #e53e3e;
+    margin-left: 0.5rem;
+  }
+  
+  .cancelButton:hover {
+    background-color: #fed7d7;
+  }
+  
+  .editControls {
+    display: flex;
+  }
+  
+  .profileContent {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .profileSidebar {
+    flex: 1;
+    max-width: 250px;
+  }
+  
+  .avatarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .userAvatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 4px solid white;
+  }
+  
+  .avatarUpload {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .uploadLabel {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #e2e8f0;
+    color: #4a5568;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+  }
+  
+  .uploadLabel:hover {
+    background-color: #cbd5e0;
+  }
+  
+  .uploadInput {
+    display: none;
+  }
+  
+  .userRoleContainer,
+  .joinDateContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background-color: #f7fafc;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .userRole {
+    font-weight: 600;
+    color: #4a5568;
+  }
+  
+  .profileDetails {
+    flex: 3;
+  }
+  
+  .profileSection {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .infoItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .infoLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #718096;
+    font-size: 0.875rem;
+  }
+  
+  .infoValue {
+    font-weight: 500;
+    color: #2d3748;
+  }
+  
+  .editInput {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .editInput:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  }
+  
+  .tableContainer {
+    overflow-x: auto;
+  }
+  
+  .dataTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .dataTable th,
+  .dataTable td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .dataTable th {
+    background-color: #f7fafc;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.875rem;
+  }
+  
+  .dataTable tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* Dark mode support */
+  :global(.dark-mode) .profileSection,
+  :global(.dark-mode) .editInput {
+    background-color: #2d3748;
+    color: #e2e8f0;
+  }
+  
+  :global(.dark-mode) .sectionTitle {
+    color: #e2e8f0;
+    border-bottom-color: #4a5568;
+  }
+  
+  :global(.dark-mode) .infoValue {
+    color: #e2e8f0;
+  }
+  
+  :global(.dark-mode) .userRoleContainer,
+  :global(.dark-mode) .joinDateContainer {
+    background-color: #2d3748;
+    color: #e2e8f0;
+  }
+  
+  :global(.dark-mode) .userRole {
+    color: #e2e8f0;
+  }
+  
+  :global(.dark-mode) .uploadLabel {
+    background-color: #4a5568;
+    color: #e2e8f0;
+  }
+  
+  :global(.dark-mode) .uploadLabel:hover {
+    background-color: #718096;
+  }
+  
+  :global(.dark-mode) .dataTable th {
+    background-color: #2d3748;
+    color: #e2e8f0;
+  }
+  
+  :global(.dark-mode) .dataTable td,
+  :global(.dark-mode) .dataTable th {
+    border-bottom-color: #4a5568;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .profileContent {
+      flex-direction: column;
+    }
+  
+    .profileSidebar {
+      max-width: 100%;
+      margin-bottom: 1.5rem;
+    }
+  
+    .infoGrid {
+      grid-template-columns: 1fr;
+    }
+  }

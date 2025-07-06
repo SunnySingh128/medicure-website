@@ -1,23 +1,27 @@
-/* Original navbar styles - now fixed */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
-  height: 70px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 15px 40px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Add padding to body to account for fixed navbar */
-body {
-  padding-top: 70px;
+.darkNav {
+  background-color: #111240; /* Default dark mode color */
+}
+
+/* Add this new class for the "lighter" dark mode */
+.lightNav {
+  background-color: rgba(17, 34, 64, 0.7);
 }
 
 .navbarLogo {
@@ -29,152 +33,250 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #333;
+  color: inherit;
 }
 
 .logoImage {
   height: 40px;
   margin-right: 10px;
+  border-radius: 50%;
 }
 
 .navbarLogo h1 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #333;
-  transition: color 0.3s ease;
+  margin: 0;
+  color: white;
 }
 
 .cureText {
-  color: #0077cc;
-  transition: color 0.3s ease;
+  color: #3498db;
 }
 
 .navbarMenu {
   display: flex;
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
-  align-items: center;
+  /* Center the menu items */
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .navItem {
-  margin-left: 1.5rem;
+  margin: 0 10px;
 }
 
 .navLink {
+  color: white;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  padding: 0.5rem;
+  padding: 8px 16px;
   border-radius: 4px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  /* Add border-bottom property with transparent initial state */
+  border-bottom: 2px solid transparent;
 }
 
 .navLink:hover {
-  color: #0077cc;
+  background-color: rgba(52, 152, 219, 0.7);
+  /* Add underline effect on hover */
+  border-bottom: 2px solid white;
 }
 
 .active {
-  color: #0077cc;
-  font-weight: 700;
+  background-color: #3498db;
+  color: white;
 }
 
-/* Dark mode styles */
-.dark-mode {
-  background-color: #121212;
-  color: #f5f5f5;
-}
-
-.dark-mode .navbar {
-  background-color: #1e1e1e;
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .logoLink,
-.dark-mode .navbarLogo h1,
-.dark-mode .navLink {
-  color: #f5f5f5;
-}
-
-.dark-mode .cureText {
-  color: #4db8ff;
-}
-
-.dark-mode .navLink:hover {
-  color: #4db8ff;
-}
-
-.dark-mode .active {
-  color: #4db8ff;
-}
-
-/* Toggle button styles */
 .themeToggle {
-  display: flex;
-  align-items: center;
+  margin-left: 20px;
 }
 
-.toggleButton {
-  display: flex;
-  align-items: center;
-  background: none;
-  border: none;
+/* Animation related styles */
+.animatedToggle {
   cursor: pointer;
-  padding: 0;
-  margin-left: 8px;
-}
-
-.toggleIcon {
-  margin-right: 5px;
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.dark-mode .toggleIcon {
-  color: #f5f5f5;
-}
-
-.toggleSlider {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-  background-color: #ccc;
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.toggleSlider:hover {
-  background-color: #b3b3b3;
-}
-
-.dark-mode .toggleSlider {
-  background-color: #666;
-}
-
-.dark-mode .toggleSlider:hover {
-  background-color: #777;
-}
-
-.toggleCircle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
-  background-color: white;
+  padding: 8px;
   border-radius: 50%;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
-.toggleActive {
-  transform: translateX(20px);
-  background-color: #0077cc;
+.animatedToggle:hover {
+  background-color: rgba(52, 152, 219, 0.3);
 }
 
-/* Dark mode body styles */
-.dark-mode body {
-  background-color: #121212;
-  color: #f5f5f5;
+.iconContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: all 0.5s ease;
+}
+
+.darkActive {
+  color: #f1c40f; /* Yellow for sun in dark mode */
+  transform: rotate(0deg);
+}
+
+.lightActive {
+  color: #f39c12; /* Orange for moon in light mode */
+  transform: rotate(180deg);
+}
+
+.sunIcon,
+.moonIcon {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.sunIcon {
+  color: #f1c40f;
+}
+
+.moonIcon {
+  color: #ecf0f1;
+}
+
+.hidden {
+  opacity: 0;
+  transform: scale(0.5);
+}
+/* Add this to your existing Navbar.module.css */
+
+/* Profile container styling */
+.profileContainer {
+  position: relative;
+  margin-left: 1rem;
+}
+
+.profileToggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.profileToggle:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.userAvatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.chevronIcon {
+  margin-left: 0.25rem;
+  transition: transform 0.2s ease;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+/* Profile dropdown styling */
+.profileDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 16rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  z-index: 50;
+}
+
+.darkProfile {
+  background-color: #2d3748;
+  color: #f7fafc;
+  border: 1px solid #4a5568;
+}
+
+.lightProfile {
+  background-color: #ffffff;
+  color: #1a202c;
+  border: 1px solid #e2e8f0;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.profileAvatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.profileInfo {
+  margin-left: 0.75rem;
+  overflow: hidden;
+}
+
+.profileName {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.profileEmail {
+  font-size: 0.875rem;
+  color: #718096;
+  margin: 0.25rem 0 0 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.profileRole {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.roleLabel {
+  font-weight: 600;
+}
+
+.profileActions {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+
+.profileLink {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.darkProfile .profileLink {
+  color: #e2e8f0;
+}
+
+.darkProfile .profileLink:hover {
+  background-color: #4a5568;
+}
+
+.lightProfile .profileLink {
+  color: #1a202c;
+}
+
+.lightProfile .profileLink:hover {
+  background-color: #f7fafc;
 }

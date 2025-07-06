@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom';
-import styles from './Login.module.css'; // Import the CSS Module
+import styles from './Login.module.css';
 
 export default function Login() {
   const navigate = useNavigate();
-  const [obj, setObj] = useState({ email: "", password: "" });
+  const [obj, setObj] = useState({ email: "", password: "" }); // Changed here
   const [sub, setSub] = useState(false);
   const [mess, setMess] = useState("");
   const [showAnimation, setShowAnimation] = useState(false);
+
+  // Background image URL
+  const backgroundImageUrl = 'https://i.pinimg.com/736x/21/17/58/211758027b07e758c3483215ab20dc78.jpg';
 
   function handleChange(e) {
     setObj({ ...obj, [e.target.name]: e.target.value });
@@ -26,15 +29,15 @@ export default function Login() {
           const res = await axios.post('http://localhost:3000/user/login', obj, {
             headers: { 'Content-Type': 'application/json' }
           });
-
+          
           const message = res.data.message || "Login successful";
           setMess(message);
-
+          
           if (message.toLowerCase().includes("success")) {
             setShowAnimation(true);
             setTimeout(() => {
               setShowAnimation(false);
-              navigate("/dashboard");
+              navigate("/firstpage");
             }, 5000);
           }
         } catch (err) {
@@ -49,32 +52,41 @@ export default function Login() {
   }, [sub, obj, navigate]);
 
   return (
-    <div className={styles.loginContainer}>
+    <div 
+      className={styles.loginContainer} 
+      style={{ 
+        backgroundImage: `url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
+    >
       <div className={styles.loginCard}>
         <div className={styles.loginHeader}>
           <h1 className={styles.loginTitle}>Welcome Back</h1>
           <p className={styles.loginSubtitle}>Sign in to your account</p>
         </div>
-
+        
         <form onSubmit={handleSubmit} className={styles.loginForm}>
           <input 
             type="email"
             name="email"
+            value={obj.email}
             placeholder="Email"
             onChange={handleChange}
             required
             className={styles.loginInput}
           />
-
+          
           <input 
             type="password"
             name="password"
+            value={obj.password}
             placeholder="Password"
             onChange={handleChange}
             required
             className={styles.loginInput}
           />
-
+          
           <div className={styles.loginOptions}>
             <label className="flex items-center">
               <input type="checkbox" className="mr-2 accent-purple-600" />
@@ -82,7 +94,7 @@ export default function Login() {
             </label>
             <a href="#" className="hover:text-white underline">Forgot password?</a>
           </div>
-
+          
           <button 
             type="submit"
             disabled={sub}
@@ -101,7 +113,7 @@ export default function Login() {
             )}
           </button>
         </form>
-
+        
         {mess && (
           <p className={`${styles.loginMessage} ${
             mess.toLowerCase().includes("success") ? styles.successMessage : styles.errorMessage
@@ -109,7 +121,7 @@ export default function Login() {
             {mess}
           </p>
         )}
-
+        
         <p className={styles.loginFooter}>
           Don't have an account?{" "}
           <NavLink to="/signup" className={styles.loginLink}>
@@ -117,7 +129,7 @@ export default function Login() {
           </NavLink>
         </p>
       </div>
-
+      
       {/* Animation Modal */}
       {showAnimation && (
         <div className={styles.animationContainer}>

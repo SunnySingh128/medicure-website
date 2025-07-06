@@ -23,7 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 # 
-GEMINI_API_KEY=AIzaSyBFhcr3LM2UEl3OeYgcuL1UOeyPVwmEJxA
-EMAIL="sunnysingh14092005@gmail.com"
-PASSWORD="hwga psjd mdpr umqy"
-MONGODB_URI="mongodb+srv://sunnysingh14092005:5JkCE5GugdVjpbJb@cluster0.kb9fk.mongodb.net/todo"

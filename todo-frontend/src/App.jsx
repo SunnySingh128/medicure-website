@@ -8,6 +8,10 @@ import About from "./about"
 import Ser from "./services"
 import Con from "./contact"
 import Chat from "./chatbot"
+import Meter from "./meter"
+import UserPro from "./userpro"
+import First from "./firstpage"
+import Sec from "./second.jsx"
 import { Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -22,6 +26,10 @@ function App() {
       <Route path="/services" element={<Ser/>} />
       <Route path="/contact" element={<Con/>} />
       <Route path="/chatbot" element={<Chat/>} />
+      <Route path="/meter" element={<Meter/>} />
+      <Route path="/userpro" element={<UserPro/>} />
+      <Route path="/firstpage" element={<First/>} />
+      <Route path="/dietplan/:condition" element={<Sec/>} />
       <Route path="*" element={<h1>404 Not Found</h1>} />
     </Routes>
     </>
